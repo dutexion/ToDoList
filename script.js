@@ -10,13 +10,16 @@ function clockData() {
 
 setInterval(clockData, 1000);
 
-const textInput = document.querySelectorAll("#textInput");
+const textInput = document.querySelector("#textInput");
+const plusButton = document.querySelector("#plusButton");
+let result = document.querySelector("#List");
 
 function addList() {
   let inList = document.createElement("li");
   let delBtn = document.createElement("button");
+  inList.innerHTML = textInput.value;
+  textInput.value = "";
+  result.appendChild(inList);
 }
 
-function a() {
-  console.log(textInput.values);
-}
+plusButton.addEventListener("click", addList);
