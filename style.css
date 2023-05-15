@@ -42,13 +42,22 @@ body {
 }
 
 li {
-  padding: 20px 200px;
+  width: 1000px;
+  height: 70px;
   margin-top: 15px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   border: rgb(0, 0, 0) solid 3px;
   border-radius: 10px;
   text-align: center;
+  line-height: 70px;
+  overflow: auto;
+}
+
+li button {
+  float: right;
+  margin-top: 25px;
+  margin-right: 25px;
 }
 
 #result {
