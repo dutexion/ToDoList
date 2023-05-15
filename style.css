@@ -39,13 +39,19 @@ body {
 #List {
   list-style: none;
   padding: 0;
-  width: 0;
-  height: 0;
-  align-items: center;
 }
 
-#List li {
+li {
   padding: 20px 200px;
-  background-color: red;
+  margin-top: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: rgb(0, 0, 0) solid 3px;
+  border-radius: 10px;
   text-align: center;
+}
+
+#result {
+  padding: 0;
+  border: none;
 }
