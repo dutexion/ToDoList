@@ -21,6 +21,7 @@ function addList() {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
+    inList.classList.add();
     inList.addEventListener("click", success);
     textInput.value = "";
     result.appendChild(inList);
@@ -31,12 +32,35 @@ function addList() {
   }
 }
 
+function p() {
+  const p = document.querySelectorAll("li");
+  p.forEach((p) => {
+    p.classList.add("visible");
+  });
+}
+
 plusButton.addEventListener("click", addList);
 
 function success(e) {
   let succesOne = e.target;
   succesOne.classList.toggle("success");
-  console.log(succesOne.classList);
+}
+
+const selectButton = document.querySelector("#selectButton");
+const selectMenu = document.querySelector("#selectMenu");
+
+selectButton.addEventListener("click", tagSelect);
+
+function tagSelect() {
+  if (selectButton.textContent === ">") {
+    selectButton.innerHTML = "<";
+    selectMenu.classList.add("selectMenu-close");
+    selectMenu.classList.remove("selectMenu");
+  } else {
+    selectButton.innerHTML = ">";
+    selectMenu.classList.add("selectMenu");
+    selectMenu.classList.remove("selectMenu-close");
+  }
 }
 
 function delList(e) {
@@ -52,17 +76,41 @@ const sBtn4 = document.querySelector("#sBtn4");
 const selected = "selected";
 
 sBtn1.addEventListener("click", function () {
+  clearSelect(1);
   sBtn1.classList.toggle(selected);
 });
 
 sBtn2.addEventListener("click", function () {
+  clearSelect(2);
   sBtn2.classList.toggle(selected);
 });
 
 sBtn3.addEventListener("click", function () {
+  clearSelect(3);
   sBtn3.classList.toggle(selected);
 });
 
 sBtn4.addEventListener("click", function () {
+  clearSelect(4);
   sBtn4.classList.toggle(selected);
 });
+
+function clearSelect(a) {
+  if (a === 1) {
+    sBtn2.classList.remove(selected);
+    sBtn3.classList.remove(selected);
+    sBtn4.classList.remove(selected);
+  } else if (a === 2) {
+    sBtn1.classList.remove(selected);
+    sBtn3.classList.remove(selected);
+    sBtn4.classList.remove(selected);
+  } else if (a === 3) {
+    sBtn1.classList.remove(selected);
+    sBtn2.classList.remove(selected);
+    sBtn4.classList.remove(selected);
+  } else {
+    sBtn1.classList.remove(selected);
+    sBtn2.classList.remove(selected);
+    sBtn3.classList.remove(selected);
+  }
+}

@@ -5,29 +5,41 @@ body {
 }
 
 #title {
+  margin-top: 10px;
+  margin-bottom: 20px;
   font-size: 60px;
   font-weight: bold;
+  cursor: default;
 }
 
 .clock {
+  cursor: default;
   font-weight: bold;
   font-size: 30px;
 }
 
 #inputBox {
   margin-top: 15px;
+  height: 30px;
+  display: flex;
 }
 #textInput {
+  cursor: pointer;
+  padding-left: 5px;
+  margin-left: 381px;
   width: 250px;
   height: 20px;
   font-size: 14px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: rgba(0, 0, 0, 0.5) solid 5px;
   border-radius: 5px;
   border: none;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 #plusButton {
+  margin: 0;
+  margin-left: 15px;
   cursor: pointer;
   padding: 0;
   font-size: 14px;
@@ -38,6 +50,94 @@ body {
   background-color: black;
   color: white;
   border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+#plusButton:hover {
+  box-shadow: 0px 0px 5px gray;
+}
+
+#selectButton {
+  margin: 0;
+  margin-left: 15px;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+#selectButton:hover {
+  box-shadow: 0px 0px 5px gray;
+}
+
+.selectMenu {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  margin-left: 15px;
+  width: 290px;
+  background-color: black;
+  border-radius: 15px;
+  transition: 1s ease-in-out;
+}
+.selectMenu-close {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  margin-left: 15px;
+  width: 290px;
+  background-color: black;
+  border-radius: 15px;
+  transition: 1s ease-in-out;
+  margin-right: 290px;
+  width: 0;
+}
+
+#sBtn1InMenu {
+  margin-top: 2.5px;
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px crimson solid;
+}
+
+#sBtn2InMenu {
+  margin-top: 2.5px;
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px orange solid;
+}
+
+#sBtn3InMenu {
+  margin-top: 2.5px;
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px forestgreen solid;
+}
+
+#sBtn4InMenu {
+  margin-top: 2.5px;
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px darkslateblue solid;
 }
 
 #select {
@@ -59,19 +159,28 @@ body {
 }
 
 #select button:hover {
-  color: rgb(0, 0, 0);
+  color: black !important;
+  background-color: rgb(17, 0, 255);
 }
 
-#select button:nth-child(2n) {
-  background-color: darkgray;
+#sBtn1 {
+  background-color: crimson;
 }
 
-#select button:nth-child(2n + 1) {
-  background-color: lightgray;
+#sBtn2 {
+  background-color: orange;
+}
+
+#sBtn3 {
+  background-color: forestgreen;
+}
+
+#sBtn4 {
+  background-color: darkslateblue;
 }
 
 .selected {
-  background-color: rgba(255, 0, 0, 0.8) !important;
+  background-color: yellow !important;
   color: rgb(0, 0, 0) !important;
 }
 
@@ -81,6 +190,7 @@ body {
 }
 
 li {
+  /*display: none;*/
   cursor: pointer;
   width: 1000px;
   height: 70px;
@@ -119,6 +229,10 @@ li button {
   text-align: center;
   padding: 0;
   transition: 0.5s ease-in-out;
+}
+
+.visible {
+  display: block;
 }
 
 li button:hover {
