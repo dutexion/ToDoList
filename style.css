@@ -140,6 +140,23 @@ body {
   border: 3px darkslateblue solid;
 }
 
+.tagSelected {
+  transition: 0.3s ease-in-out;
+}
+
+#sBtn1InMenu.tagSelected {
+  background-color: crimson !important;
+}
+#sBtn2InMenu.tagSelected {
+  background-color: orange !important;
+}
+#sBtn3InMenu.tagSelected {
+  background-color: forestgreen !important;
+}
+#sBtn4InMenu.tagSelected {
+  background-color: darkslateblue !important;
+}
+
 #select {
   margin-top: 15px;
   display: flex;

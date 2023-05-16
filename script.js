@@ -114,3 +114,43 @@ function clearSelect(a) {
     sBtn3.classList.remove(selected);
   }
 }
+
+const tagOne = document.querySelector("#sBtn1InMenu");
+const tagTwo = document.querySelector("#sBtn2InMenu");
+const tagThree = document.querySelector("#sBtn3InMenu");
+const tagFour = document.querySelector("#sBtn4InMenu");
+
+let nowTag = 1;
+
+tagOne.addEventListener("click", function () {
+  chooseTag(1);
+});
+
+tagTwo.addEventListener("click", function () {
+  chooseTag(2);
+});
+
+tagThree.addEventListener("click", function () {
+  chooseTag(3);
+});
+
+tagFour.addEventListener("click", function () {
+  chooseTag(4);
+});
+
+function chooseTag(b) {
+  tagOne.classList.remove("tagSelected");
+  tagTwo.classList.remove("tagSelected");
+  tagThree.classList.remove("tagSelected");
+  tagFour.classList.remove("tagSelected");
+
+  if (b === 1) {
+    tagOne.classList.add("tagSelected");
+  } else if (b === 2) {
+    tagTwo.classList.add("tagSelected");
+  } else if (b === 3) {
+    tagThree.classList.add("tagSelected");
+  } else {
+    tagFour.classList.add("tagSelected");
+  }
+}
