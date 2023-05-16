@@ -104,7 +104,7 @@ section {
   justify-content: space-around;
   overflow: hidden;
   margin-left: 15px;
-  width: 290px;
+  width: 400px;
   background-color: black;
   border-radius: 15px;
   transition: 1s ease-in-out;
@@ -114,11 +114,11 @@ section {
   justify-content: space-around;
   overflow: hidden;
   margin-left: 15px;
-  width: 290px;
+  width: 350px;
   background-color: black;
   border-radius: 15px;
   transition: 1s ease-in-out;
-  margin-right: 290px;
+  margin-right: 400px;
   width: 0;
 }
 
@@ -162,6 +162,26 @@ section {
   border: 3px darkslateblue solid;
 }
 
+#sBtn5InMenu {
+  margin-top: 2.5px;
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px lightgray solid;
+}
+
+#sBtn6InMenu {
+  margin-top: 2.5px;
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px darkgray solid;
+}
+
 .tagSelected {
   transition: 0.3s ease-in-out;
 }
@@ -177,6 +197,12 @@ section {
 }
 #sBtn4InMenu.tagSelected {
   background-color: darkslateblue !important;
+}
+#sBtn5InMenu.tagSelected {
+  background-color: lightgray !important;
+}
+#sBtn6InMenu.tagSelected {
+  background-color: darkgray !important;
 }
 
 #select {
@@ -240,8 +266,15 @@ section {
   padding: 0;
 }
 
+.makeLi {
+  width: 1000px;
+  height: 70px;
+  margin-top: 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 li {
-  /*display: none;*/
+  border: 3px yellow solid;
   cursor: pointer;
   width: 1000px;
   height: 70px;
@@ -296,6 +329,10 @@ li button {
 
 .fourList {
   border: 3px rgba(72, 61, 139, 0.7) solid;
+}
+
+.noneList {
+  border: 3px rgba(0, 0, 0, 0.8) solid;
 }
 
 .invisible {

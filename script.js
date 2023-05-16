@@ -1,5 +1,36 @@
 const clock = document.querySelector(".clock");
 
+function addNoneList() {
+  let inList = document.createElement("li");
+  let delBtn = document.createElement("button");
+  inList.innerHTML = textInput.value;
+  inList.classList.add("oneList");
+  inList.classList.add("twoList");
+  inList.classList.add("threeList");
+  inList.classList.add("fourList");
+  inList.classList.add("noneList");
+  inList.addEventListener("click", success);
+  textInput.value = "";
+  result.appendChild(inList);
+  inList.appendChild(delBtn);
+  delBtn.innerHTML = "X";
+  delBtn.classList.add("delBtn");
+  delBtn.addEventListener("click", delList);
+}
+
+function addAllList() {
+  let inList = document.createElement("li");
+  let delBtn = document.createElement("button");
+  inList.innerHTML = textInput.value;
+  inList.addEventListener("click", success);
+  textInput.value = "";
+  result.appendChild(inList);
+  inList.appendChild(delBtn);
+  delBtn.innerHTML = "X";
+  delBtn.classList.add("delBtn");
+  delBtn.addEventListener("click", delList);
+}
+
 function clockData() {
   const time = new Date();
   const hour = time.getHours();
@@ -36,7 +67,15 @@ function addList() {
   }
 }
 
-plusButton.addEventListener("click", addList);
+plusButton.addEventListener("click", function () {
+  if (nowTag === "fiveList") {
+    addNoneList();
+  } else if (nowTag === "sixList") {
+    addAllList();
+  } else {
+    addList();
+  }
+});
 textInput.addEventListener("keypress", function () {
   if (window.event.keyCode == 13) {
     addList();
@@ -188,6 +227,8 @@ const tagOne = document.querySelector("#sBtn1InMenu");
 const tagTwo = document.querySelector("#sBtn2InMenu");
 const tagThree = document.querySelector("#sBtn3InMenu");
 const tagFour = document.querySelector("#sBtn4InMenu");
+const tagFive = document.querySelector("#sBtn5InMenu");
+const tagSix = document.querySelector("#sBtn6InMenu");
 
 let nowTag = "oneList";
 
@@ -211,11 +252,23 @@ tagFour.addEventListener("click", function () {
   nowTag = "fourList";
 });
 
+tagFive.addEventListener("click", function () {
+  chooseTag(5);
+  nowTag = "fiveList";
+});
+
+tagSix.addEventListener("click", function () {
+  chooseTag(6);
+  nowTag = "sixList";
+});
+
 function chooseTag(b) {
   tagOne.classList.remove("tagSelected");
   tagTwo.classList.remove("tagSelected");
   tagThree.classList.remove("tagSelected");
   tagFour.classList.remove("tagSelected");
+  tagFive.classList.remove("tagSelected");
+  tagSix.classList.remove("tagSelected");
 
   if (b === 1) {
     tagOne.classList.add("tagSelected");
@@ -223,7 +276,11 @@ function chooseTag(b) {
     tagTwo.classList.add("tagSelected");
   } else if (b === 3) {
     tagThree.classList.add("tagSelected");
-  } else {
+  } else if (b === 4) {
     tagFour.classList.add("tagSelected");
+  } else if (b === 5) {
+    tagFive.classList.add("tagSelected");
+  } else {
+    tagSix.classList.add("tagSelected");
   }
 }
