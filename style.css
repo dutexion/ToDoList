@@ -1,7 +1,23 @@
 body {
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: lightgray;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  width: 100vw;
+  height: 300px;
+}
+
+section {
+  margin-top: 300px;
 }
 
 #title {
