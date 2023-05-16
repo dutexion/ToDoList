@@ -14,8 +14,11 @@ body {
   font-size: 30px;
 }
 
+#inputBox {
+  margin-top: 15px;
+}
 #textInput {
-  width: 200px;
+  width: 250px;
   height: 20px;
   font-size: 14px;
   background-color: black;
@@ -36,6 +39,35 @@ body {
   border-radius: 5px;
 }
 
+#select {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-around;
+}
+
+#select button {
+  width: 50px;
+  height: 25px;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+#select button:hover {
+  color: rgb(0, 0, 0);
+}
+
+#select button:nth-child(2n) {
+  background-color: darkgray;
+}
+
+#select button:nth-child(2n + 1) {
+  background-color: lightgray;
+}
+
 #List {
   list-style: none;
   padding: 0;
@@ -45,6 +77,7 @@ li {
   width: 1000px;
   height: 70px;
   margin-top: 15px;
+  padding-left: 25px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   border: rgb(0, 0, 0) solid 3px;
@@ -58,6 +91,15 @@ li button {
   float: right;
   margin-top: 25px;
   margin-right: 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding: 0;
 }
 
 #result {
