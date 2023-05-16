@@ -21,7 +21,7 @@ function addList() {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
-    inList.classList.add();
+    inList.classList.add(nowTag);
     inList.addEventListener("click", success);
     textInput.value = "";
     result.appendChild(inList);
@@ -30,13 +30,6 @@ function addList() {
     delBtn.classList.add("delBtn");
     delBtn.addEventListener("click", delList);
   }
-}
-
-function p() {
-  const p = document.querySelectorAll("li");
-  p.forEach((p) => {
-    p.classList.add("visible");
-  });
 }
 
 plusButton.addEventListener("click", addList);
@@ -75,27 +68,88 @@ const sBtn4 = document.querySelector("#sBtn4");
 
 const selected = "selected";
 
+function invisible1() {
+  const p = document.querySelectorAll(".oneList");
+  p.forEach((p) => {
+    p.classList.add("invisible");
+  });
+}
+
+function invisible2() {
+  const p = document.querySelectorAll(".twoList");
+  p.forEach((p) => {
+    p.classList.add("invisible");
+  });
+}
+
+function invisible3() {
+  const p = document.querySelectorAll(".threeList");
+  p.forEach((p) => {
+    p.classList.add("invisible");
+  });
+}
+
+function invisible4() {
+  const p = document.querySelectorAll(".fourList");
+  p.forEach((p) => {
+    p.classList.add("invisible");
+  });
+}
+
+function noneSelect() {
+  if (
+    !sBtn1.classList.contains(selected) &&
+    !sBtn2.classList.contains(selected) &&
+    !sBtn3.classList.contains(selected) &&
+    !sBtn4.classList.contains(selected)
+  ) {
+    const p = document.querySelectorAll("li");
+    p.forEach((p) => {
+      p.classList.remove("invisible");
+    });
+  }
+}
 sBtn1.addEventListener("click", function () {
   clearSelect(1);
   sBtn1.classList.toggle(selected);
+  invisible2();
+  invisible3();
+  invisible4();
+  noneSelect();
 });
 
 sBtn2.addEventListener("click", function () {
   clearSelect(2);
   sBtn2.classList.toggle(selected);
+  invisible1();
+  invisible3();
+  invisible4();
+  noneSelect();
 });
 
 sBtn3.addEventListener("click", function () {
   clearSelect(3);
   sBtn3.classList.toggle(selected);
+  invisible1();
+  invisible2();
+  invisible4();
+  noneSelect();
 });
 
 sBtn4.addEventListener("click", function () {
   clearSelect(4);
   sBtn4.classList.toggle(selected);
+  invisible1();
+  invisible2();
+  invisible3();
+  noneSelect();
 });
 
 function clearSelect(a) {
+  const p = document.querySelectorAll("li");
+  p.forEach((p) => {
+    p.classList.remove("invisible");
+  });
   if (a === 1) {
     sBtn2.classList.remove(selected);
     sBtn3.classList.remove(selected);
@@ -120,22 +174,26 @@ const tagTwo = document.querySelector("#sBtn2InMenu");
 const tagThree = document.querySelector("#sBtn3InMenu");
 const tagFour = document.querySelector("#sBtn4InMenu");
 
-let nowTag = 1;
+let nowTag = "oneList";
 
 tagOne.addEventListener("click", function () {
   chooseTag(1);
+  nowTag = "oneList";
 });
 
 tagTwo.addEventListener("click", function () {
   chooseTag(2);
+  nowTag = "twoList";
 });
 
 tagThree.addEventListener("click", function () {
   chooseTag(3);
+  nowTag = "threeList";
 });
 
 tagFour.addEventListener("click", function () {
   chooseTag(4);
+  nowTag = "fourList";
 });
 
 function chooseTag(b) {
