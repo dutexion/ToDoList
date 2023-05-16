@@ -22,6 +22,10 @@ function addList() {
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.classList.add(nowTag);
+    inList.classList.add("invisible");
+    if (nowTag === selectTag || selectTag === "") {
+      inList.classList.remove("invisible");
+    }
     inList.addEventListener("click", success);
     textInput.value = "";
     result.appendChild(inList);
@@ -33,6 +37,11 @@ function addList() {
 }
 
 plusButton.addEventListener("click", addList);
+textInput.addEventListener("keypress", function () {
+  if (window.event.keyCode == 13) {
+    addList();
+  }
+});
 
 function success(e) {
   let succesOne = e.target;
@@ -65,6 +74,7 @@ const sBtn1 = document.querySelector("#sBtn1");
 const sBtn2 = document.querySelector("#sBtn2");
 const sBtn3 = document.querySelector("#sBtn3");
 const sBtn4 = document.querySelector("#sBtn4");
+let selectTag = "";
 
 const selected = "selected";
 
@@ -105,11 +115,13 @@ function noneSelect() {
   ) {
     const p = document.querySelectorAll("li");
     p.forEach((p) => {
+      nowTag = "";
       p.classList.remove("invisible");
     });
   }
 }
 sBtn1.addEventListener("click", function () {
+  selectTag = "oneList";
   clearSelect(1);
   sBtn1.classList.toggle(selected);
   invisible2();
@@ -119,6 +131,7 @@ sBtn1.addEventListener("click", function () {
 });
 
 sBtn2.addEventListener("click", function () {
+  selectTag = "twoList";
   clearSelect(2);
   sBtn2.classList.toggle(selected);
   invisible1();
@@ -128,6 +141,7 @@ sBtn2.addEventListener("click", function () {
 });
 
 sBtn3.addEventListener("click", function () {
+  selectTag = "threeList";
   clearSelect(3);
   sBtn3.classList.toggle(selected);
   invisible1();
@@ -137,6 +151,7 @@ sBtn3.addEventListener("click", function () {
 });
 
 sBtn4.addEventListener("click", function () {
+  selectTag = "fourList";
   clearSelect(4);
   sBtn4.classList.toggle(selected);
   invisible1();
