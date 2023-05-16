@@ -37,3 +37,26 @@ function delList(e) {
   let removeOne = e.target.parentElement;
   removeOne.remove();
 }
+
+const sBtn1 = document.querySelector("#sBtn1");
+const sBtn2 = document.querySelector("#sBtn2");
+const sBtn3 = document.querySelector("#sBtn3");
+const sBtn4 = document.querySelector("#sBtn4");
+
+const selected = "selected";
+
+sBtn1.addEventListener("click", function () {
+  sBtn1.classList.toggle(selected);
+});
+
+sBtn2.addEventListener("click", function () {
+  sBtn2.classList.toggle(selected);
+});
+
+sBtn3.addEventListener("click", function () {
+  sBtn3.classList.toggle(selected);
+});
+
+sBtn4.addEventListener("click", function () {
+  sBtn4.classList.toggle(selected);
+});

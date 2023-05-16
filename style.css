@@ -68,6 +68,11 @@ body {
   background-color: lightgray;
 }
 
+.selected {
+  background-color: rgba(255, 0, 0, 0.8) !important;
+  color: rgb(0, 0, 0) !important;
+}
+
 #List {
   list-style: none;
   padding: 0;
