@@ -28,6 +28,7 @@ body {
 }
 
 #plusButton {
+  cursor: pointer;
   padding: 0;
   font-size: 14px;
   width: 23px;
@@ -48,6 +49,7 @@ body {
 }
 
 #select button {
+  cursor: pointer;
   width: 50px;
   height: 25px;
   color: rgb(255, 255, 255);
@@ -79,20 +81,31 @@ body {
 }
 
 li {
+  cursor: pointer;
   width: 1000px;
   height: 70px;
   margin-top: 15px;
   padding-left: 25px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
-  border: rgb(0, 0, 0) solid 3px;
   border-radius: 10px;
   text-align: center;
   line-height: 70px;
   overflow: auto;
+  transition: 0.3s ease-in-out;
+}
+
+li:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.success {
+  color: red;
+  text-decoration: line-through;
 }
 
 li button {
+  cursor: pointer;
   float: right;
   margin-top: 25px;
   margin-right: 25px;
@@ -105,6 +118,12 @@ li button {
   height: 25px;
   text-align: center;
   padding: 0;
+  transition: 0.5s ease-in-out;
+}
+
+li button:hover {
+  background-color: lightgrey;
+  color: black;
 }
 
 #result {

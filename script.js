@@ -16,11 +16,12 @@ let result = document.querySelector("#List");
 
 function addList() {
   if (textInput.value === "") {
-    alert("입력해주세요");
+    alert("내용을 입력해주세요");
   } else {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
+    inList.addEventListener("click", success);
     textInput.value = "";
     result.appendChild(inList);
     inList.appendChild(delBtn);
@@ -32,8 +33,13 @@ function addList() {
 
 plusButton.addEventListener("click", addList);
 
+function success(e) {
+  let succesOne = e.target;
+  succesOne.classList.toggle("success");
+  console.log(succesOne.classList);
+}
+
 function delList(e) {
-  console.log(e);
   let removeOne = e.target.parentElement;
   removeOne.remove();
 }
