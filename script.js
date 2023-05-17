@@ -112,12 +112,14 @@ const selectMenu = document.querySelector("#selectMenu");
 selectButton.addEventListener("click", tagSelect);
 
 function tagSelect() {
-  if (selectButton.textContent === ">") {
-    selectButton.innerHTML = "<";
+  if (selectButton.textContent === "<") {
+    selectButton.innerHTML = ">";
+    selectButton.classList.remove("open");
     selectMenu.classList.add("selectMenu-close");
     selectMenu.classList.remove("selectMenu");
   } else {
-    selectButton.innerHTML = ">";
+    selectButton.innerHTML = "<";
+    selectButton.classList.add("open");
     selectMenu.classList.add("selectMenu");
     selectMenu.classList.remove("selectMenu-close");
   }
@@ -250,7 +252,7 @@ const tagFour = document.querySelector("#sBtn4InMenu");
 const tagFive = document.querySelector("#sBtn5InMenu");
 const tagSix = document.querySelector("#sBtn6InMenu");
 
-let nowTag = "oneList";
+let nowTag = "fiveList";
 
 tagOne.addEventListener("click", function () {
   chooseTag(1);
@@ -303,4 +305,19 @@ function chooseTag(b) {
   } else {
     tagSix.classList.add("tagSelected");
   }
+}
+
+const trash = document.querySelector("#inEmote");
+
+trash.addEventListener("click", function () {
+  if (confirm("정말 삭제 하시겠습니까?")) {
+    allcrear();
+  }
+});
+
+function allcrear() {
+  const p = document.querySelectorAll("li");
+  p.forEach((p) => {
+    p.remove();
+  });
 }

@@ -43,13 +43,13 @@ section {
 #textInput {
   cursor: pointer;
   padding-left: 5px;
-  margin-left: 491px;
-  width: 250px;
-  height: 20px;
+  margin-left: 460px;
+  width: 350px;
+  height: 30px;
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0.5);
   border: rgba(0, 0, 0, 0.5) solid 5px;
-  border-radius: 5px;
+  border-radius: 15px;
   border: none;
   color: rgb(255, 255, 255);
 }
@@ -64,14 +64,14 @@ section {
   margin-left: 15px;
   cursor: pointer;
   padding: 0;
-  font-size: 14px;
-  width: 23px;
-  height: 23px;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   border: none;
   background-color: black;
   color: white;
-  border-radius: 5px;
+  border-radius: 50px;
   transition: 0.3s ease-in-out;
 }
 
@@ -80,28 +80,30 @@ section {
 }
 
 #selectButton {
-  margin: 0;
-  margin-left: 15px;
-  cursor: pointer;
-  padding: 0;
-  font-size: 14px;
-  width: 23px;
-  height: 23px;
-  text-align: center;
+  box-shadow: none;
   border: none;
+  float: right;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
   background-color: black;
   color: white;
-  border-radius: 5px;
+  border-radius: 50px;
   transition: 0.3s ease-in-out;
 }
 
-#selectButton:hover {
-  box-shadow: 0px 0px 5px gray;
-}
+/*#SBIM {
+  display: flex;
+  width: 370px;
+  height: 30px;
+  justify-content: space-around;
+}*/
 
 .selectMenu {
-  display: flex;
-  justify-content: space-around;
   overflow: hidden;
   margin-left: 15px;
   width: 400px;
@@ -109,16 +111,24 @@ section {
   border-radius: 15px;
   transition: 1s ease-in-out;
 }
+
 .selectMenu-close {
-  display: flex;
-  justify-content: space-around;
   overflow: hidden;
   margin-left: 15px;
   background-color: black;
   border-radius: 15px;
   transition: 1s ease-in-out;
-  margin-right: 400px;
-  width: 0;
+  margin-right: 370px;
+  width: 30px;
+}
+
+.selectMenu button {
+  margin-left: 6px;
+  transition: 0.3s ease-in-out;
+}
+
+.selectMenu button:hover {
+  box-shadow: 0px 0px 5px white;
 }
 
 #sBtn1InMenu {
@@ -205,7 +215,7 @@ section {
 }
 
 #select {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   width: 300px;
@@ -223,8 +233,7 @@ section {
 }
 
 #select button:hover {
-  color: black !important;
-  background-color: rgb(17, 0, 255);
+  box-shadow: 0px 0px 5px black;
 }
 
 #sBtn1 {
@@ -243,10 +252,24 @@ section {
   background-color: darkslateblue;
 }
 
+#emote {
+  margin-top: 20px;
+}
+
+#emote i {
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+#emote i:hover {
+  text-shadow: 0px 0px 5px gray;
+  cursor: 1;
+}
+
 .selected {
-  background-color: yellow !important;
   border: 2px black solid !important;
-  color: rgb(0, 0, 0) !important;
+  color: aqua !important;
+  box-shadow: 0px 0px 5px black;
 }
 
 .listBox {
