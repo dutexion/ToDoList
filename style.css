@@ -43,7 +43,7 @@ section {
 #textInput {
   cursor: pointer;
   padding-left: 5px;
-  margin-left: 381px;
+  margin-left: 491px;
   width: 250px;
   height: 20px;
   font-size: 14px;
@@ -114,7 +114,6 @@ section {
   justify-content: space-around;
   overflow: hidden;
   margin-left: 15px;
-  width: 350px;
   background-color: black;
   border-radius: 15px;
   transition: 1s ease-in-out;
@@ -246,6 +245,7 @@ section {
 
 .selected {
   background-color: yellow !important;
+  border: 2px black solid !important;
   color: rgb(0, 0, 0) !important;
 }
 

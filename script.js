@@ -1,34 +1,46 @@
 const clock = document.querySelector(".clock");
 
 function addNoneList() {
-  let inList = document.createElement("li");
-  let delBtn = document.createElement("button");
-  inList.innerHTML = textInput.value;
-  inList.classList.add("oneList");
-  inList.classList.add("twoList");
-  inList.classList.add("threeList");
-  inList.classList.add("fourList");
-  inList.classList.add("noneList");
-  inList.addEventListener("click", success);
-  textInput.value = "";
-  result.appendChild(inList);
-  inList.appendChild(delBtn);
-  delBtn.innerHTML = "X";
-  delBtn.classList.add("delBtn");
-  delBtn.addEventListener("click", delList);
+  if (textInput.value === "") {
+    alert("내용을 입력해주세요");
+  } else {
+    let inList = document.createElement("li");
+    let delBtn = document.createElement("button");
+    inList.innerHTML = textInput.value;
+    inList.classList.add("oneList");
+    inList.classList.add("twoList");
+    inList.classList.add("threeList");
+    inList.classList.add("fourList");
+    inList.classList.add("noneList");
+    inList.addEventListener("click", success);
+    inList.classList.add("invisible");
+    if (selectTag === "") {
+      inList.classList.remove("invisible");
+    }
+    textInput.value = "";
+    result.appendChild(inList);
+    inList.appendChild(delBtn);
+    delBtn.innerHTML = "X";
+    delBtn.classList.add("delBtn");
+    delBtn.addEventListener("click", delList);
+  }
 }
 
 function addAllList() {
-  let inList = document.createElement("li");
-  let delBtn = document.createElement("button");
-  inList.innerHTML = textInput.value;
-  inList.addEventListener("click", success);
-  textInput.value = "";
-  result.appendChild(inList);
-  inList.appendChild(delBtn);
-  delBtn.innerHTML = "X";
-  delBtn.classList.add("delBtn");
-  delBtn.addEventListener("click", delList);
+  if (textInput.value === "") {
+    alert("내용을 입력해주세요");
+  } else {
+    let inList = document.createElement("li");
+    let delBtn = document.createElement("button");
+    inList.innerHTML = textInput.value;
+    inList.addEventListener("click", success);
+    textInput.value = "";
+    result.appendChild(inList);
+    inList.appendChild(delBtn);
+    delBtn.innerHTML = "X";
+    delBtn.classList.add("delBtn");
+    delBtn.addEventListener("click", delList);
+  }
 }
 
 function clockData() {
@@ -52,6 +64,7 @@ function addList() {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
+    console.log(nowTag);
     inList.classList.add(nowTag);
     inList.classList.add("invisible");
     if (nowTag === selectTag || selectTag === "") {
@@ -78,7 +91,13 @@ plusButton.addEventListener("click", function () {
 });
 textInput.addEventListener("keypress", function () {
   if (window.event.keyCode == 13) {
-    addList();
+    if (nowTag === "fiveList") {
+      addNoneList();
+    } else if (nowTag === "sixList") {
+      addAllList();
+    } else {
+      addList();
+    }
   }
 });
 
@@ -153,12 +172,13 @@ function noneSelect() {
     !sBtn4.classList.contains(selected)
   ) {
     const p = document.querySelectorAll("li");
+    selectTag = "";
     p.forEach((p) => {
-      nowTag = "";
       p.classList.remove("invisible");
     });
   }
 }
+
 sBtn1.addEventListener("click", function () {
   selectTag = "oneList";
   clearSelect(1);
