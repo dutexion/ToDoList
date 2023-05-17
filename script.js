@@ -12,6 +12,7 @@ function addNoneList() {
     inList.classList.add("threeList");
     inList.classList.add("fourList");
     inList.classList.add("noneList");
+    inList.classList.add("makeLi");
     inList.addEventListener("click", success);
     inList.classList.add("invisible");
     if (selectTag === "") {
@@ -23,6 +24,8 @@ function addNoneList() {
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
     delBtn.addEventListener("click", delList);
+    setTimeout(() => inList.classList.remove("makeLi"), 0);
+    setTimeout(() => inList.classList.add("liScroll"), 300);
   }
 }
 
@@ -35,11 +38,14 @@ function addAllList() {
     inList.innerHTML = textInput.value;
     inList.addEventListener("click", success);
     textInput.value = "";
+    inList.classList.add("makeLi");
     result.appendChild(inList);
     inList.appendChild(delBtn);
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
     delBtn.addEventListener("click", delList);
+    setTimeout(() => inList.classList.remove("makeLi"), 0);
+    setTimeout(() => inList.classList.add("liScroll"), 300);
   }
 }
 
@@ -67,6 +73,7 @@ function addList() {
     console.log(nowTag);
     inList.classList.add(nowTag);
     inList.classList.add("invisible");
+    inList.classList.add("makeLi");
     if (nowTag === selectTag || selectTag === "") {
       inList.classList.remove("invisible");
     }
@@ -77,6 +84,8 @@ function addList() {
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
     delBtn.addEventListener("click", delList);
+    setTimeout(() => inList.classList.remove("makeLi"), 0);
+    setTimeout(() => inList.classList.add("liScroll"), 300);
   }
 }
 
@@ -127,7 +136,9 @@ function tagSelect() {
 
 function delList(e) {
   let removeOne = e.target.parentElement;
-  removeOne.remove();
+  removeOne.classList.add("makeLi");
+  removeOne.classList.remove("liScroll");
+  setTimeout(() => removeOne.remove(), 300);
 }
 
 const sBtn1 = document.querySelector("#sBtn1");
