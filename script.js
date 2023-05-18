@@ -1,5 +1,94 @@
 const clock = document.querySelector(".clock");
 const textInput = document.querySelector("#textInput");
+const renameMenuButton = document.querySelector("#renameMenu");
+const renameMenu = document.querySelector("#renameMenuBack");
+
+const sBtn1 = document.querySelector("#sBtn1");
+const sBtn2 = document.querySelector("#sBtn2");
+const sBtn3 = document.querySelector("#sBtn3");
+const sBtn4 = document.querySelector("#sBtn4");
+
+const tagOne = document.querySelector("#sBtn1InMenu");
+const tagTwo = document.querySelector("#sBtn2InMenu");
+const tagThree = document.querySelector("#sBtn3InMenu");
+const tagFour = document.querySelector("#sBtn4InMenu");
+const tagFive = document.querySelector("#sBtn5InMenu");
+const tagSix = document.querySelector("#sBtn6InMenu");
+
+renameMenuButton.addEventListener("click", function () {
+  renameMenu.classList.toggle("renameMenuBackOpen");
+});
+
+const renameOne = document.querySelector(".renameTagOne");
+renameOne.addEventListener("click", function () {
+  oneName = prompt("변경할 태그 이름(영어)을 입력해주세요.");
+  renameSave();
+});
+const renameTwo = document.querySelector(".renameTagTwo");
+renameTwo.addEventListener("click", function () {
+  twoName = prompt("변경할 태그 이름(영어)을 입력해주세요");
+  renameSave();
+});
+const renameThree = document.querySelector(".renameTagThree");
+renameThree.addEventListener("click", function () {
+  threeName = prompt("변경할 태그 이름(영어)을 입력해주세요");
+  renameSave();
+});
+const renameFour = document.querySelector(".renameTagFour");
+renameFour.addEventListener("click", function () {
+  fourName = prompt("변경할 태그 이름(영어)을 입력해주세요");
+  renameSave();
+});
+
+let oneName = "one",
+  twoName = "two",
+  threeName = "three",
+  fourName = "four";
+
+renameGet();
+renameSet();
+
+function renameSave() {
+  oneName.replace('"', "");
+  twoName.replace('"', "");
+  threeName.replace('"', "");
+  fourName.replace('"', "");
+  localStorage.setItem("oneTagName", JSON.stringify(oneName));
+  localStorage.setItem("twoTagName", JSON.stringify(twoName));
+  localStorage.setItem("threeTagName", JSON.stringify(threeName));
+  localStorage.setItem("fourTagName", JSON.stringify(fourName));
+  renameSet();
+}
+function renameGet() {
+  oneName = localStorage.getItem("oneTagName");
+  twoName = localStorage.getItem("twoTagName");
+  threeName = localStorage.getItem("threeTagName");
+  fourName = localStorage.getItem("fourTagName");
+  oneName.replace('"', "");
+  twoName.replace('"', "");
+  threeName.replace('"', "");
+  fourName.replace('"', "");
+
+  if (oneName === null || oneName === undefined) {
+    renameSave();
+  }
+}
+function renameSet() {
+  renameOne.textContent = oneName;
+  renameTwo.textContent = twoName;
+  renameThree.textContent = threeName;
+  renameFour.textContent = fourName;
+
+  sBtn1.textContent = oneName;
+  sBtn2.textContent = twoName;
+  sBtn3.textContent = threeName;
+  sBtn4.textContent = fourName;
+
+  tagOne.textContent = oneName;
+  tagTwo.textContent = twoName;
+  tagThree.textContent = threeName;
+  tagFour.textContent = fourName;
+}
 
 function toDoSave() {
   localStorage.setItem("toDos", JSON.stringify(toDoArray));
@@ -183,10 +272,6 @@ function delList(e) {
   setTimeout(() => removeOne.remove(), 300);
 }
 
-const sBtn1 = document.querySelector("#sBtn1");
-const sBtn2 = document.querySelector("#sBtn2");
-const sBtn3 = document.querySelector("#sBtn3");
-const sBtn4 = document.querySelector("#sBtn4");
 let selectTag = "";
 
 const selected = "selected";
@@ -308,13 +393,6 @@ function clearSelect(a) {
     sBtn3.classList.remove(selected);
   }
 }
-
-const tagOne = document.querySelector("#sBtn1InMenu");
-const tagTwo = document.querySelector("#sBtn2InMenu");
-const tagThree = document.querySelector("#sBtn3InMenu");
-const tagFour = document.querySelector("#sBtn4InMenu");
-const tagFive = document.querySelector("#sBtn5InMenu");
-const tagSix = document.querySelector("#sBtn6InMenu");
 
 let nowTag = "fiveList";
 

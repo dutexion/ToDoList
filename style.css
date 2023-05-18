@@ -20,12 +20,99 @@ section {
   margin-top: 300px;
 }
 
+#renameMenu {
+  cursor: pointer;
+  border: none;
+  z-index: 1;
+  color: white;
+  background-color: black;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  margin-top: 15px;
+  margin-left: 20px;
+  padding: 0;
+  line-height: 30px;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+#renameMenuBack {
+  overflow: hidden;
+  transition: 1s ease-in-out;
+  z-index: 0;
+  background-color: black;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  margin-top: 15px;
+  margin-left: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.renameMenuBackOpen {
+  width: 150px !important;
+  height: 250px !important;
+}
+
+.rename {
+  pointer-events: all !important;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 25px;
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+.rename:hover {
+  box-shadow: 0px 0px 5px white;
+}
+
+.renameTagOne {
+  border: 3px crimson solid;
+}
+
+.renameTagTwo {
+  border: 3px orange solid;
+}
+
+.renameTagThree {
+  border: 3px forestgreen solid;
+}
+
+.renameTagFour {
+  border: 3px darkslateblue solid;
+}
+
+.rename:first-child {
+  margin-top: 50px;
+}
+
 #title {
-  margin-top: 10px;
+  display: inline;
+  margin-top: 0;
   margin-bottom: 20px;
   font-size: 60px;
   font-weight: bold;
   cursor: default;
+}
+
+.tagNameMenu {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  background-color: black;
 }
 
 .clock {
@@ -123,6 +210,7 @@ section {
 }
 
 .selectMenu button {
+  font-size: 14px;
   transition: 0.3s ease-in-out;
 }
 
@@ -228,6 +316,7 @@ section {
 }
 
 #select button {
+  font-size: 14px;
   cursor: pointer;
   width: 50px;
   height: 25px;
