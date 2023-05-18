@@ -62,6 +62,7 @@ section {
 }
 
 .rename {
+  overflow: hidden;
   pointer-events: all !important;
   cursor: pointer;
   margin-top: 20px;
@@ -116,13 +117,14 @@ section {
 }
 
 .clock {
+  margin-top: 20px;
   cursor: default;
   font-weight: bold;
   font-size: 30px;
 }
 
 #inputBox {
-  margin-top: 15px;
+  margin-top: 20px;
   height: 30px;
   display: flex;
 }
@@ -211,6 +213,7 @@ section {
 
 .selectMenu button {
   font-size: 14px;
+  overflow: hidden;
   transition: 0.3s ease-in-out;
 }
 
@@ -316,6 +319,7 @@ section {
 }
 
 #select button {
+  overflow: hidden;
   font-size: 14px;
   cursor: pointer;
   width: 50px;
@@ -393,7 +397,7 @@ li {
   width: 1000px;
   height: 70px;
   margin-top: 15px;
-  padding-left: 50px;
+  padding-left: 100px;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   border-radius: 10px;
@@ -411,12 +415,29 @@ li:hover {
   overflow: auto;
 }
 
-.success {
+li.success {
   color: red;
   text-decoration: line-through;
 }
 
-li button {
+li button.delBtn {
+  cursor: pointer;
+  float: right;
+  margin-top: 25px;
+  margin-right: 25px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding: 0;
+  transition: 0.5s ease-in-out;
+}
+
+li button.rtBtn {
   cursor: pointer;
   float: right;
   margin-top: 25px;

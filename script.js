@@ -104,6 +104,7 @@ function addNoneList() {
   } else {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
+    let rtBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.classList.add("fiveList");
     inList.classList.add("makeLi");
@@ -113,8 +114,12 @@ function addNoneList() {
       inList.classList.remove("invisible");
     }
     result.appendChild(inList);
+    rtBtn.classList.add("rtBtn");
     inList.appendChild(delBtn);
+    inList.appendChild(rtBtn);
+    rtBtn.addEventListener("click", fixList);
     delBtn.innerHTML = "X";
+    rtBtn.innerHTML = "F";
     delBtn.classList.add("delBtn");
     delBtn.addEventListener("click", delList);
     let toDO = new toDoParent(textInput.value, "fiveList");
@@ -132,13 +137,18 @@ function addAllList() {
   } else {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
+    let rtBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.addEventListener("click", success);
     inList.classList.add("sixList");
     inList.classList.add("makeLi");
     result.appendChild(inList);
+    rtBtn.classList.add("rtBtn");
     inList.appendChild(delBtn);
+    inList.appendChild(rtBtn);
+    rtBtn.addEventListener("click", fixList);
     delBtn.innerHTML = "X";
+    rtBtn.innerHTML = "F";
     delBtn.classList.add("delBtn");
     let toDO = new toDoParent(textInput.value, "sixList");
     toDoArray.push(toDO);
@@ -169,6 +179,7 @@ function addList() {
   } else {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
+    let rtBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.classList.add(nowTag);
     inList.classList.add("invisible");
@@ -178,8 +189,12 @@ function addList() {
     }
     inList.addEventListener("click", success);
     result.appendChild(inList);
+    rtBtn.classList.add("rtBtn");
     inList.appendChild(delBtn);
+    inList.appendChild(rtBtn);
+    rtBtn.addEventListener("click", fixList);
     delBtn.innerHTML = "X";
+    rtBtn.innerHTML = "F";
     delBtn.classList.add("delBtn");
     delBtn.setAttribute("id", Date.now());
     let toDO = new toDoParent(textInput.value, nowTag);
@@ -263,6 +278,25 @@ function delList(e) {
   removeOne.classList.add("makeLi");
   removeOne.classList.remove("liScroll");
   setTimeout(() => removeOne.remove(), 300);
+}
+
+function fixList(e) {
+  let fixOne = e.target.parentElement;
+  const targetElement = fixOne;
+  const index = getChildElementIndex(targetElement);
+  fixOne.innerHTML = prompt("수정할 내용을 적어주세요");
+  toDoArray[index].listValue = fixOne.innerHTML;
+  let delBtn = document.createElement("button");
+  let rtBtn = document.createElement("button");
+  rtBtn.classList.add("rtBtn");
+  fixOne.appendChild(delBtn);
+  fixOne.appendChild(rtBtn);
+  delBtn.innerHTML = "X";
+  rtBtn.innerHTML = "F";
+  delBtn.classList.add("delBtn");
+  delBtn.addEventListener("click", delList);
+  rtBtn.addEventListener("click", fixList);
+  toDoSave();
 }
 
 let selectTag = "";
@@ -465,7 +499,6 @@ if (savedToDo !== null) {
     let tag = savedToDo[i].listTag;
 
     if (tag === "oneList") {
-      console.log("시발 좀 돼라");
       nowTag = "oneList";
       chooseTag(1);
     } else if (tag === "twoList") {
