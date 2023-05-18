@@ -1,4 +1,19 @@
 const clock = document.querySelector(".clock");
+const textInput = document.querySelector("#textInput");
+
+function toDoSave() {
+  localStorage.setItem("toDos", JSON.stringify(toDoArray));
+}
+
+function toDoParent(listValue, listTag) {
+  this.listValue = listValue;
+  this.listTag = listTag;
+}
+
+const getToDo = localStorage.getItem("toDos");
+const savedToDo = JSON.parse(getToDo);
+
+let toDoArray = [];
 
 function addNoneList() {
   if (textInput.value === "") {
@@ -7,11 +22,10 @@ function addNoneList() {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
-    inList.classList.add("oneList");
-    inList.classList.add("twoList");
-    inList.classList.add("threeList");
-    inList.classList.add("fourList");
-    inList.classList.add("noneList");
+    inList.classList.add("fiveList");
+    let toDO = new toDoParent(textInput.value, "fiveList");
+    toDoArray.push(toDO);
+    toDoSave();
     inList.classList.add("makeLi");
     inList.addEventListener("click", success);
     inList.classList.add("invisible");
@@ -37,6 +51,10 @@ function addAllList() {
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.addEventListener("click", success);
+    inList.classList.add("sixList");
+    let toDO = new toDoParent(textInput.value, "sixList");
+    toDoArray.push(toDO);
+    toDoSave();
     textInput.value = "";
     inList.classList.add("makeLi");
     result.appendChild(inList);
@@ -59,7 +77,6 @@ function clockData() {
 
 setInterval(clockData, 1000);
 
-const textInput = document.querySelector("#textInput");
 const plusButton = document.querySelector("#plusButton");
 let result = document.querySelector("#List");
 
@@ -70,8 +87,10 @@ function addList() {
     let inList = document.createElement("li");
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
-    console.log(nowTag);
     inList.classList.add(nowTag);
+    let toDO = new toDoParent(textInput.value, nowTag);
+    toDoArray.push(toDO);
+    toDoSave();
     inList.classList.add("invisible");
     inList.classList.add("makeLi");
     if (nowTag === selectTag || selectTag === "") {
@@ -109,6 +128,16 @@ textInput.addEventListener("keypress", function () {
     }
   }
 });
+
+function plusList() {
+  if (nowTag === "fiveList") {
+    addNoneList();
+  } else if (nowTag === "sixList") {
+    addAllList();
+  } else {
+    addList();
+  }
+}
 
 function success(e) {
   let succesOne = e.target;
@@ -177,6 +206,13 @@ function invisible4() {
   });
 }
 
+function invisible5() {
+  const p = document.querySelectorAll(".fiveList");
+  p.forEach((p) => {
+    p.classList.add("invisible");
+  });
+}
+
 function noneSelect() {
   if (
     !sBtn1.classList.contains(selected) &&
@@ -199,6 +235,7 @@ sBtn1.addEventListener("click", function () {
   invisible2();
   invisible3();
   invisible4();
+  invisible5();
   noneSelect();
 });
 
@@ -209,6 +246,7 @@ sBtn2.addEventListener("click", function () {
   invisible1();
   invisible3();
   invisible4();
+  invisible5();
   noneSelect();
 });
 
@@ -219,6 +257,7 @@ sBtn3.addEventListener("click", function () {
   invisible1();
   invisible2();
   invisible4();
+  invisible5();
   noneSelect();
 });
 
@@ -229,6 +268,7 @@ sBtn4.addEventListener("click", function () {
   invisible1();
   invisible2();
   invisible3();
+  invisible5();
   noneSelect();
 });
 
@@ -323,6 +363,8 @@ const trash = document.querySelector("#inEmote");
 trash.addEventListener("click", function () {
   if (confirm("정말 삭제 하시겠습니까?")) {
     allcrear();
+    toDoArray = null;
+    toDoSave();
   }
 });
 
@@ -331,4 +373,38 @@ function allcrear() {
   p.forEach((p) => {
     p.remove();
   });
+}
+
+if (savedToDo !== null) {
+  for (let i = 0; i < savedToDo.length; i++) {
+    let listvalue = savedToDo[i].listValue;
+    let tag = savedToDo[i].listTag;
+
+    console.log(listvalue);
+    console.log(tag);
+
+    if (tag === "oneList") {
+      nowTag = "oneList";
+      chooseTag(1);
+    } else if (tag === "twoList") {
+      nowTag = "twoList";
+      chooseTag(2);
+    } else if (tag === "threeList") {
+      nowTag = "threeList";
+      chooseTag(3);
+    } else if (tag === "fourList") {
+      nowTag = "fourList";
+      chooseTag(4);
+    } else if (tag === "fiveList") {
+      nowTag = "fiveList";
+      chooseTag(5);
+    } else if (tag === "sixList") {
+      nowTag = "sixList";
+      chooseTag(6);
+    }
+
+    textInput.value = listvalue;
+    plusList();
+    nowTag = "fiveList";
+  }
 }
