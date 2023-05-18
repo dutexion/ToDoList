@@ -46,13 +46,10 @@ let oneName = "one",
   fourName = "four";
 
 renameGet();
+renameSave();
 renameSet();
 
 function renameSave() {
-  oneName.replace('"', "");
-  twoName.replace('"', "");
-  threeName.replace('"', "");
-  fourName.replace('"', "");
   localStorage.setItem("oneTagName", JSON.stringify(oneName));
   localStorage.setItem("twoTagName", JSON.stringify(twoName));
   localStorage.setItem("threeTagName", JSON.stringify(threeName));
@@ -60,34 +57,30 @@ function renameSave() {
   renameSet();
 }
 function renameGet() {
-  oneName = localStorage.getItem("oneTagName");
-  twoName = localStorage.getItem("twoTagName");
-  threeName = localStorage.getItem("threeTagName");
-  fourName = localStorage.getItem("fourTagName");
-  oneName.replace('"', "");
-  twoName.replace('"', "");
-  threeName.replace('"', "");
-  fourName.replace('"', "");
+  oneName = localStorage.getItem("oneTagName").replace(/\"/gi, "");
+  twoName = localStorage.getItem("twoTagName").replace(/\"/gi, "");
+  threeName = localStorage.getItem("threeTagName").replace(/\"/gi, "");
+  fourName = localStorage.getItem("fourTagName").replace(/\"/gi, "");
 
   if (oneName === null || oneName === undefined) {
     renameSave();
   }
 }
 function renameSet() {
-  renameOne.textContent = oneName;
-  renameTwo.textContent = twoName;
-  renameThree.textContent = threeName;
-  renameFour.textContent = fourName;
+  renameOne.textContent = oneName.replace(/\"/gi, "");
+  renameTwo.textContent = twoName.replace(/\"/gi, "");
+  renameThree.textContent = threeName.replace(/\"/gi, "");
+  renameFour.textContent = fourName.replace(/\"/gi, "");
 
-  sBtn1.textContent = oneName;
-  sBtn2.textContent = twoName;
-  sBtn3.textContent = threeName;
-  sBtn4.textContent = fourName;
+  sBtn1.textContent = oneName.replace(/\"/gi, "");
+  sBtn2.textContent = twoName.replace(/\"/gi, "");
+  sBtn3.textContent = threeName.replace(/\"/gi, "");
+  sBtn4.textContent = fourName.replace(/\"/gi, "");
 
-  tagOne.textContent = oneName;
-  tagTwo.textContent = twoName;
-  tagThree.textContent = threeName;
-  tagFour.textContent = fourName;
+  tagOne.textContent = oneName.replace(/\"/gi, "");
+  tagTwo.textContent = twoName.replace(/\"/gi, "");
+  tagThree.textContent = threeName.replace(/\"/gi, "");
+  tagFour.textContent = fourName.replace(/\"/gi, "");
 }
 
 function toDoSave() {
