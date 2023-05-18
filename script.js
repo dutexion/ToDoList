@@ -34,7 +34,6 @@ function addNoneList() {
     inList.appendChild(delBtn);
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
-    delBtn.setAttribute("id", Date.now());
     delBtn.addEventListener("click", delList);
     let toDO = new toDoParent(textInput.value, "fiveList");
     toDoArray.push(toDO);
@@ -59,8 +58,7 @@ function addAllList() {
     inList.appendChild(delBtn);
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
-    delBtn.setAttribute("id", Date.now());
-    let toDO = new toDoParent(textInput.value, "fiveList", delBtn.id);
+    let toDO = new toDoParent(textInput.value, "sixList");
     toDoArray.push(toDO);
     toDoSave();
     delBtn.addEventListener("click", delList);
@@ -102,7 +100,7 @@ function addList() {
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
     delBtn.setAttribute("id", Date.now());
-    let toDO = new toDoParent(textInput.value, "fiveList", delBtn.id);
+    let toDO = new toDoParent(textInput.value, nowTag);
     toDoArray.push(toDO);
     toDoSave();
     delBtn.addEventListener("click", delList);
@@ -110,6 +108,13 @@ function addList() {
     setTimeout(() => inList.classList.remove("makeLi"), 0);
     setTimeout(() => inList.classList.add("liScroll"), 300);
   }
+}
+
+function getChildElementIndex(element) {
+  const parent = element.parentNode;
+  const children = parent.children;
+
+  return Array.from(children).indexOf(element);
 }
 
 plusButton.addEventListener("click", function () {
@@ -169,6 +174,10 @@ function tagSelect() {
 
 function delList(e) {
   let removeOne = e.target.parentElement;
+  const targetElement = removeOne;
+  const index = getChildElementIndex(targetElement);
+  toDoArray.splice(index, 1);
+  toDoSave();
   removeOne.classList.add("makeLi");
   removeOne.classList.remove("liScroll");
   setTimeout(() => removeOne.remove(), 300);
@@ -365,7 +374,7 @@ function chooseTag(b) {
 const trash = document.querySelector("#inEmote");
 
 trash.addEventListener("click", function () {
-  if (confirm("정말 삭제 하시겠습니까?")) {
+  if (confirm("정말 모든 todo를 삭제 하시겠습니까?")) {
     allcrear();
     toDoArray.length = 0;
     toDoSave();
@@ -385,6 +394,7 @@ if (savedToDo !== null) {
     let tag = savedToDo[i].listTag;
 
     if (tag === "oneList") {
+      console.log("시발 좀 돼라");
       nowTag = "oneList";
       chooseTag(1);
     } else if (tag === "twoList") {
