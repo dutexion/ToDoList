@@ -5,9 +5,10 @@ function toDoSave() {
   localStorage.setItem("toDos", JSON.stringify(toDoArray));
 }
 
-function toDoParent(listValue, listTag) {
+function toDoParent(listValue, listTag, random) {
   this.listValue = listValue;
   this.listTag = listTag;
+  this.random = random;
 }
 
 const getToDo = localStorage.getItem("toDos");
@@ -23,21 +24,22 @@ function addNoneList() {
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.classList.add("fiveList");
-    let toDO = new toDoParent(textInput.value, "fiveList");
-    toDoArray.push(toDO);
-    toDoSave();
     inList.classList.add("makeLi");
     inList.addEventListener("click", success);
     inList.classList.add("invisible");
     if (selectTag === "") {
       inList.classList.remove("invisible");
     }
-    textInput.value = "";
     result.appendChild(inList);
     inList.appendChild(delBtn);
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
+    delBtn.setAttribute("id", Date.now());
     delBtn.addEventListener("click", delList);
+    let toDO = new toDoParent(textInput.value, "fiveList");
+    toDoArray.push(toDO);
+    toDoSave();
+    textInput.value = "";
     setTimeout(() => inList.classList.remove("makeLi"), 0);
     setTimeout(() => inList.classList.add("liScroll"), 300);
   }
@@ -52,16 +54,17 @@ function addAllList() {
     inList.innerHTML = textInput.value;
     inList.addEventListener("click", success);
     inList.classList.add("sixList");
-    let toDO = new toDoParent(textInput.value, "sixList");
-    toDoArray.push(toDO);
-    toDoSave();
-    textInput.value = "";
     inList.classList.add("makeLi");
     result.appendChild(inList);
     inList.appendChild(delBtn);
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
+    delBtn.setAttribute("id", Date.now());
+    let toDO = new toDoParent(textInput.value, "fiveList", delBtn.id);
+    toDoArray.push(toDO);
+    toDoSave();
     delBtn.addEventListener("click", delList);
+    textInput.value = "";
     setTimeout(() => inList.classList.remove("makeLi"), 0);
     setTimeout(() => inList.classList.add("liScroll"), 300);
   }
@@ -88,21 +91,22 @@ function addList() {
     let delBtn = document.createElement("button");
     inList.innerHTML = textInput.value;
     inList.classList.add(nowTag);
-    let toDO = new toDoParent(textInput.value, nowTag);
-    toDoArray.push(toDO);
-    toDoSave();
     inList.classList.add("invisible");
     inList.classList.add("makeLi");
     if (nowTag === selectTag || selectTag === "") {
       inList.classList.remove("invisible");
     }
     inList.addEventListener("click", success);
-    textInput.value = "";
     result.appendChild(inList);
     inList.appendChild(delBtn);
     delBtn.innerHTML = "X";
     delBtn.classList.add("delBtn");
+    delBtn.setAttribute("id", Date.now());
+    let toDO = new toDoParent(textInput.value, "fiveList", delBtn.id);
+    toDoArray.push(toDO);
+    toDoSave();
     delBtn.addEventListener("click", delList);
+    textInput.value = "";
     setTimeout(() => inList.classList.remove("makeLi"), 0);
     setTimeout(() => inList.classList.add("liScroll"), 300);
   }
@@ -363,7 +367,7 @@ const trash = document.querySelector("#inEmote");
 trash.addEventListener("click", function () {
   if (confirm("정말 삭제 하시겠습니까?")) {
     allcrear();
-    toDoArray = null;
+    toDoArray.length = 0;
     toDoSave();
   }
 });
@@ -379,9 +383,6 @@ if (savedToDo !== null) {
   for (let i = 0; i < savedToDo.length; i++) {
     let listvalue = savedToDo[i].listValue;
     let tag = savedToDo[i].listTag;
-
-    console.log(listvalue);
-    console.log(tag);
 
     if (tag === "oneList") {
       nowTag = "oneList";
@@ -405,6 +406,5 @@ if (savedToDo !== null) {
 
     textInput.value = listvalue;
     plusList();
-    nowTag = "fiveList";
   }
 }
