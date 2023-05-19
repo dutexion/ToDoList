@@ -64,10 +64,12 @@ function renameSave() {
   renameSet();
 }
 function renameGet() {
-  oneName = localStorage.getItem("oneTagName").replace(/\"/gi, "");
-  twoName = localStorage.getItem("twoTagName").replace(/\"/gi, "");
-  threeName = localStorage.getItem("threeTagName").replace(/\"/gi, "");
-  fourName = localStorage.getItem("fourTagName").replace(/\"/gi, "");
+  if (!(localStorage.getItem("oneTagName") === null)) {
+    oneName = localStorage.getItem("oneTagName").replace(/\"/gi, "");
+    twoName = localStorage.getItem("twoTagName").replace(/\"/gi, "");
+    threeName = localStorage.getItem("threeTagName").replace(/\"/gi, "");
+    fourName = localStorage.getItem("fourTagName").replace(/\"/gi, "");
+  }
 
   if (oneName === null || oneName === undefined) {
     renameSave();
